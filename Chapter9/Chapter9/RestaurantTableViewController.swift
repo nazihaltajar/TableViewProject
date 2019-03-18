@@ -14,6 +14,14 @@ class RestaurantTableViewController: UITableViewController {
         "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate",
         "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional",
         "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
+    var restaurantLocations =
+        ["Hong kong", "Hong kong", "Hong kong", "Hong kong", "Hong kong", "Hong kong", "Hong kong", "Sydney",
+        "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York",
+        "New York", "London", "London", "London", "London"]
+    var restaurantTypes =
+        ["Coffee & Tea Shop", "Cafe", "Tea House", "Australian / Causual Drink", "French", "Bakery", "Bakery",
+         "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea",
+         "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -22,9 +30,14 @@ class RestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "dataCellIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        let restaurantName = restaurantNames[indexPath.row]
+        let restaurantLocation = restaurantLocations[indexPath.row]
+        let restaurantType = restaurantTypes[indexPath.row]
 
-        cell.nameLabel.text = restaurantNames[indexPath.row]
-        cell.thumbnailImageView.image = UIImage(named: restaurantNames[indexPath.row])
+        cell.nameLabel.text = restaurantName
+        cell.thumbnailImageView.image = UIImage(named: restaurantName)
+        cell.locationLabel.text = restaurantLocation
+        cell.typeLabel.text = restaurantType
 
         return cell
     }
